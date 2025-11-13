@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>عداد الاستغفار</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+  button { font-size: 20px; padding: 10px 20px; }
+  #count { font-size: 40px; margin: 20px; color: purple; }
+</style>
+</head>
+<body>
+
+<h1>اضغط على الزر للاستغفار</h1>
+<div id="count">0</div>
+<button id="tasbeehBtn">استغفر الله</button>
+
+<script>
+  // جلب العدد من التخزين المحلي
+  let count = localStorage.getItem('tasbeehCount');
+  count = count ? parseInt(count) : 0;
+
+  const countDiv = document.getElementById('count');
+  countDiv.textContent = count;
+
+  const btn = document.getElementById('tasbeehBtn');
+  btn.addEventListener('click', () => {
+    count++;
+    countDiv.textContent = count;
+    // حفظ العدد في التخزين المحلي
+    localStorage.setItem('tasbeehCount', count);
+  });
+</script>
+
+</body>
+</html>
